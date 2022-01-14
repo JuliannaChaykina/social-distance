@@ -3,13 +3,15 @@ from scaled_yolov4.detect import detect
 
 cap = cv2.VideoCapture("videoplayback.mp4")
 
-for i in range(0,1000):
+while True:
     ret, frame = cap.read()
+    if frame is None: 
+        break
     
     img = frame
     objs = detect(frame)
     for obj in objs:
-        if obj["name"] == "person" and obj["confidence"] > 0.1:
+        if obj["name"] == "person" and obj["confidence"] > 0.5:
     	    cv2.rectangle(img, (int(obj['xmin']), int(obj['ymin'])), (int(obj['xmax']), int(obj['ymax'])), (255, 0, 0), 3)
     
     for i in range(len(objs)):
