@@ -1,7 +1,7 @@
 import cv2
 from scaled_yolov4.detect import detect
 
-cap = cv2.VideoCapture("videoplayback.mp4")
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
